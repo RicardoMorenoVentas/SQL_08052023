@@ -7,7 +7,7 @@ SELECT DISTINCT country FROM customers;
 SELECT DISTINCT city FROM customers;
 
 -- Se quiere saber a qué ciudades se les ha enviado una orden
-SELECT DISTINCT city FROM customers WHERE EXISTS (SELECT ship_city FROM orders);
+SELECT DISTINCT ship_city FROM orders;
 
 --Se quiere saber a qué ciudades se les vende en el pais USA usando la tabla de clientes
 SELECT DISTINCT city FROM customers WHERE country = 'USA';
@@ -39,7 +39,7 @@ SELECT supplier_id, COUNT(product_id) AS cantidad_productos_proveedor FROM produ
 SELECT employee_id, COUNT(order_id) AS cantidad_ordenes_empleado FROM orders WHERE ship_country IN('USA','Canada','Spain') GROUP BY employee_id HAVING COUNT(order_id) > 20;
 
 --OBTENER EL PRECIO PROMEDIO DE LOS PRODUCTOS POR PROVEEDOR UNICAMENTE DE AQUELLOS CUYO PROMEDIO SEA MAYOR A 20
-SELECT supplier_id, AVG(units_in_stock) AS promedio_producto FROM products GROUP BY supplier_id HAVING AVG(units_in_stock) > 20;
+SELECT supplier_id, AVG(unit_price) AS promedio_producto FROM products GROUP BY supplier_id HAVING AVG(unit_price) > 20;
 
 --OBTENER LA SUMA DE LAS UNIDADES EN EXISTENCIA (UnitsInStock) POR CATEGORIA, Y TOMANDO EN CUENTA UNICAMENTE LOS PRODUCTOS CUYO PROVEEDOR (SupplierID) SEA IGUAL A 17, 19, 16 DICIONALMENTE CUYA SUMA POR CATEGORIA SEA MAYOR A 300--
 SELECT category_id, SUM(units_in_stock) AS suma_unidades FROM products WHERE supplier_id IN(17,19,16) GROUP BY category_id HAVING SUM(units_in_stock) > 300;
