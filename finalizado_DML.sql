@@ -142,7 +142,7 @@ SELECT category_id, AVG(unit_price) AS precio_promedio FROM products WHERE disco
 
 --Obtener la cantidad de productos por categoria,  aquellos cuyo precio se encuentre entre 10 y 60 que tengan más de 12 productos
 SELECT category_id, COUNT(product_id) AS cantidad_de_productos FROM products WHERE unit_price >= 10 AND unit_price <=60 GROUP BY category_id HAVING COUNT(product_id) > 12;
-SELECT category_id, COUNT(product_id) AS cantidad_de_productos FROM products WHERE unit_price BETWEEN 10 AND 60 AND units_in_stock > 12 GROUP BY category_id HAVING COUNT(product_id) > 12;
+SELECT category_id, COUNT(product_id) AS cantidad_de_productos FROM products WHERE unit_price BETWEEN 10 AND 60 GROUP BY category_id HAVING COUNT(product_id) > 12;
 
 --OBTENER LA SUMA DE LAS UNIDADES EN EXISTENCIA (UnitsInStock) POR CATEGORIA, Y TOMANDO EN CUENTA UNICAMENTE LOS PRODUCTOS CUYO PROVEEDOR (SupplierID) SEA IGUAL A 17, 19, 16.
 SELECT category_id, SUM(units_in_stock) AS unidades_existencia FROM products WHERE supplier_id = 17 OR supplier_id = 19 OR supplier_id = 16 GROUP BY category_id;
