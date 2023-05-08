@@ -10,7 +10,7 @@ SELECT DISTINCT city FROM customers;
 SELECT DISTINCT city FROM customers WHERE EXISTS (SELECT ship_city FROM orders);
 
 --Se quiere saber a qué ciudades se les vende en el pais USA usando la tabla de clientes
-SELECT DISTINCT cust.city FROM customers cust RIGHT OUTER JOIN orders o ON cust.city = o.ship_city WHERE o.ship_country = 'USA';
+SELECT DISTINCT city FROM customers WHERE country = 'USA';
 
 
 --Agrupacion
